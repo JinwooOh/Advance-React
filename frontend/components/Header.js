@@ -1,18 +1,18 @@
-import Nav from './Nav';
 import Link from 'next/link';
-import styled, { ThemeProvider, injectGlobal} from 'styled-components';
+import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import Nav from './Nav';
 
-Router.onRouteChangeStart = (url) => {
+Router.onRouteChangeStart = url => {
   NProgress.start();
-}
-Router.onRouteChangeComplete = (url) => {
+};
+Router.onRouteChangeComplete = url => {
   NProgress.done();
-}
-Router.onRouteChangeError = (url) => {
+};
+Router.onRouteChangeError = url => {
   NProgress.done();
-}
+};
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -27,24 +27,24 @@ const Logo = styled.h1`
     text-transform: uppercase;
     text-decoration: none;
   }
-  @media (max-width: 1300px){
+  @media (max-width: 1300px) {
     margin: 0;
     text-align: center;
   }
 `;
 const StyledHeader = styled.header`
-  .bar{
+  .bar {
     border-bottom: 10px solid ${props => props.theme.black};
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: stretch;
-    @media (max-width: 1300px){
+    @media (max-width: 1300px) {
       grid-template-columns: 1fr;
       justify-content: center;
     }
   }
-  .sub-bar{
+  .sub-bar {
     display: grid;
     grid-template-columns: 1fr auto;
     border-bottom: 1px solid ${props => props.theme.lightgrey};
@@ -59,13 +59,13 @@ const Header = () => (
           <a>Sick Fits</a>
         </Link>
       </Logo>
-      <Nav/>
+      <Nav />
     </div>
     <div className="sub-bar">
       <p>Search</p>
     </div>
     <div>Cart</div>
   </StyledHeader>
-)
+);
 
 export default Header;
